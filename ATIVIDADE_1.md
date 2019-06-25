@@ -1,0 +1,1 @@
+Ecmascript é um padrão 
