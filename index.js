@@ -48,12 +48,24 @@ class App extends React.Component {
         </option>
       );
     });
+
+    const total = this.state.options.length;
+
+    let color;
+
+    if (total > 6) {
+      color = 'text-info';
+    }  else if (total >= 3 && total <= 6) {
+      color = 'text-warning';
+    } else {
+      color = 'text-danger';
+    }
   
     return (
       <div className="form-group">
         <div className="input-group mb-3">
           <div className="input-group-prepend">
-            <span className="input-group-text">
+            <span className={ `input-group-text ${color}` }>
               {this.state.options.length}
               {this.state.options.length == 1 ? ' item' : ' itens' }
             </span>
@@ -77,11 +89,21 @@ class App extends React.Component {
     // aqui timeout só para visualizar a animação
     setTimeout(() => {
       axios
-        .get('api.json')
+        .get('index.json')
         .then(response => {
           // handle success
+          let data = [];
+
+          response.data.forEach(element => {
+            if (data.filter(value => value.valor == element.valor).length > 0) {
+              return;
+            }
+
+            data.push(element);
+          });
+
           this.setState({
-            options: response.data
+            options: data
           });
         })
         .catch(error => {
