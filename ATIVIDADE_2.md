@@ -1,1 +1,1 @@
-Usando Node.js é possível executar código JavaScript no servidor de modo assíncrono e orientado a eventos.
+Com o Node.js é possível executar código JavaScript no servidor de modo assíncrono e orientado a eventos, também é possível usar banco de dados

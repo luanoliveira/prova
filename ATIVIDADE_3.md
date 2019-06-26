@@ -1,5 +1,3 @@
-jQuery
-
 Backbone.js
 
 Angular
